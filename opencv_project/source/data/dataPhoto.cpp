@@ -1,8 +1,11 @@
 #pragma once
 
-#include "../../header/data/data_photo.h"
+#include <opencv2/opencv.hpp>
+#include <opencv2/highgui.hpp>
 
-cv::Mat get_data() {
+#include "data\dataPhoto.h"
+
+cv::Mat dataPhoto::getData() {
 
 	//Read photo
 	cv::Mat img = cv::imread("img/german-shepherd-dog.jpg");

@@ -3,10 +3,10 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui.hpp>
 
-class Data {
+class ViewSrc {
 
 public:
 
-	virtual cv::Mat getData() {};
+	void showFrame(cv::Mat frame) {};
 
 };

@@ -1,8 +1,9 @@
 #pragma once
 
-#include "../../header/view/view_src.h"
+#include <opencv2/opencv.hpp>
+#include <opencv2/highgui.hpp>
 
-void show_frame(cv::Mat){
+void showFrame(cv::Mat frame){
 
 	//Create new window
 	cv::namedWindow("New_window", cv::WINDOW_NORMAL);
@@ -12,5 +13,7 @@ void show_frame(cv::Mat){
 
 	//Add slider "brightness"
 	cv::createTrackbar("Brightness", "New_window", &brightness_slider, 100);
+
+	//CALLBACK FUNC
 
 }

@@ -1,11 +1,12 @@
 #pragma once
 
+#include <opencv2/opencv.hpp>
+#include <opencv2/highgui.hpp>
+
 class View {
 
 public:
-	View() {}
 
-	cv::Mat get_data();
+	virtual cv::Mat getData() {};
 
-	~View() {}
 };

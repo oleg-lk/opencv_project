@@ -4,7 +4,7 @@
 #include <Windows.h>
 #include <iostream>
 
-#include "source/controller/controller.cpp"
+#include "controller/controller.h"
 
 int main(){
 
@@ -16,7 +16,7 @@ int main(){
 		}
 		else{			
 			//Display window
-			cv::imshow("New_window", get_data());
+			cv::imshow("New_window", getData());
 		}
 
 	cv::waitKey(0);

@@ -1,12 +1,10 @@
 #pragma once
 
-#include "../../source/data/data_photo.cpp"
-#include "../../header/data/data.h"
-#include "../../header/view/view_src.h"
+#include "data\data.h"
+#include "data\dataPhoto.h"
+#include "view/view.h"
+#include "view/viewSrc.h"
 
-class Controller : Data, ViewSrc {
+class Controller : Data, public ViewSrc {
 
-	Controller() {}
-
-	~Controller() {}
 };

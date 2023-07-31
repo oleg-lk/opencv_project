@@ -108,6 +108,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>header</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,6 +134,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="opencv_project.cpp" />
+    <ClCompile Include="source\controller\controller.cpp" />
+    <ClCompile Include="source\data\dataPhoto.cpp" />
+    <ClCompile Include="source\view\viewSrc.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="img\german-shepherd-dog.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header\controller\controller.h" />
+    <ClInclude Include="header\data\data.h" />
+    <ClInclude Include="header\data\dataPhoto.h" />
+    <ClInclude Include="header\view\view.h" />
+    <ClInclude Include="header\view\viewSrc.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -5,6 +5,10 @@
 #include <iostream>
 
 #include "controller/controller.h"
+#include "data/dataPhoto.h"
+#include "data/data.h"
+#include "view/view.h"
+#include "view/viewSrc.h"
 
 int main(){
 
@@ -16,10 +20,11 @@ int main(){
 		}
 		else{			
 			//Display window
-			cv::imshow("New_window", getData());
+			DataPhoto data;
+			cv::imshow("New_window", data.getData());
 		}
 
-	cv::waitKey(0);
+		cv::waitKey(0);
 
 	}
 }

@@ -5,6 +5,6 @@
 #include "view/view.h"
 #include "view/viewSrc.h"
 
-class Controller : Data, public ViewSrc {
+class Controller : public Data, public ViewSrc {
 
 };

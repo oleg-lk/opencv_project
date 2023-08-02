@@ -3,7 +3,9 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui.hpp>
 
-void showFrame(cv::Mat frame){
+#include "view/viewSrc.h"
+
+void ViewSrc::showFrame(cv::Mat frame){
 
 	//Create new window
 	cv::namedWindow("New_window", cv::WINDOW_NORMAL);

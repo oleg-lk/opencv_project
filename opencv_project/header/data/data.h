@@ -5,8 +5,13 @@
 
 class Data {
 
+private:
+	cv::Mat img;
+
 public:
 
-	virtual cv::Mat getData() {};
+	virtual cv::Mat getData() {
+		return img;
+	}
 
 };

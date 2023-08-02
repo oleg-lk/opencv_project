@@ -7,6 +7,6 @@ class ViewSrc {
 
 public:
 
-	void showFrame(cv::Mat frame) {};
+	void showFrame(cv::Mat frame);
 
 };

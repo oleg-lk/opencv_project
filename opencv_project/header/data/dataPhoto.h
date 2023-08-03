@@ -6,7 +6,7 @@
 #include "data.h"
 #include "view\view.h"
 
-class DataPhoto: public Data, public View {
+class DataPhoto: public Data {
 
 public:
 

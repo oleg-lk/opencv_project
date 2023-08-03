@@ -12,19 +12,21 @@
 
 int main(){
 
+	DataPhoto data;
+
+	ViewSrc windOne("Test_window1", cv::WINDOW_NORMAL);
+	ViewSrc windSecond("Test_window2", cv::WINDOW_AUTOSIZE);
+
 	while (true) {
 
 		//exit if ESC or 'q' key is pressed
-		if ((GetAsyncKeyState(VK_ESCAPE)) || (GetAsyncKeyState('Q') & 0x8000)){
+		if ((cv::waitKey(0) == tolower(81)) || (cv::waitKey(0) == 27)){
 			(exit(0));
 		}
 		else{			
 			//Display window
-			DataPhoto data;
-			cv::imshow("New_window", data.getData());
+
+			//cv::imshow("New_window", data.getData());
 		}
-
-		cv::waitKey(0);
-
 	}
 }

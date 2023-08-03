@@ -7,9 +7,6 @@
 
 void ViewSrc::showFrame(cv::Mat frame){
 
-	//Create new window
-	cv::namedWindow("New_window", cv::WINDOW_NORMAL);
-
 	//Create trackbar
 	int brightness_slider = 50;
 

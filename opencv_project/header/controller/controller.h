@@ -10,7 +10,7 @@ class Controller : public Data, public ViewSrc {
 private:
 	
 	//img object
-	cv::Mat controllerModel;
+	DataPhoto controllerModel;
 
 	//window object
 	ViewSrc controllerFrame;
@@ -20,7 +20,7 @@ public:
 	Controller() {};
 
 	//controller gets image
-	void setModel(cv::Mat model);
+	void setModel(DataPhoto model);
 	
 	//controller gets window
 	void setView(ViewSrc frame);

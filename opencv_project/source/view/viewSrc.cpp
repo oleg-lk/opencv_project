@@ -8,11 +8,15 @@
 void ViewSrc::showFrame(cv::Mat frame){
 
 	//Create trackbar
-	int brightness_slider = 50;
+	//int brightness_slider = 50;
 
 	//Add slider "brightness"
-	cv::createTrackbar("Brightness", "New_window", &brightness_slider, 100);
+	//cv::createTrackbar("Brightness", "New_window", &brightness_slider, 100);
 
-	//CALLBACK FUNC
+	//resize image
+	cv::resize(frame, frame, cv::Size(), 0.40, 0.40);
+
+	//Display window1
+	cv::imshow("Test_window1", frame);
 
 }

@@ -3,7 +3,7 @@
 #include "controller\controller.h"
 
 //controller gets image
-void Controller::setModel(cv::Mat model) {
+void Controller::setModel(DataPhoto model) {
 	controllerModel = model;
 }
 
@@ -14,17 +14,14 @@ void Controller::setView(ViewSrc frame) {
 
 void Controller::work() {
 
-	cv::Mat imgGray;
+	//cv::Mat imgGray;
 
-	//resize image
-	cv::resize(controllerModel, controllerModel, cv::Size(), 0.40, 0.40);
-
-	//Display window1
-	cv::imshow("Test_window1", controllerModel);
+	//controller get img and window
+	controllerFrame.showFrame(controllerModel.getData());
 
 	//image to grey color
-	cv::cvtColor(controllerModel, controllerModel, cv::COLOR_BGR2GRAY);
+	//cv::cvtColor(controllerModel, controllerModel, cv::COLOR_BGR2GRAY);
 
 	//Display window2
-	cv::imshow("Test_window2", controllerModel);
+	//cv::imshow("Test_window2", controllerModel);
 }

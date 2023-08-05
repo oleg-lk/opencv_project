@@ -18,9 +18,6 @@ int main(){
 	//create img object
 	DataPhoto _data;
 
-	//class DataPhoto object gets img
-	cv::Mat controllerData = _data.getData();
-
 	//create window1
 	ViewSrc _windOne("Test_window1", cv::WINDOW_AUTOSIZE);
 
@@ -28,7 +25,7 @@ int main(){
 	ViewSrc _windSecond("Test_window2", cv::WINDOW_AUTOSIZE);
 
 	//send img to controller
-	controller.setModel(controllerData);
+	controller.setModel(_data);
 
 	//send window1 to controller
 	controller.setView(_windOne);

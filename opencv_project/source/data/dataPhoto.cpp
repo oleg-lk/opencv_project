@@ -9,11 +9,14 @@
 
 cv::Mat DataPhoto::getData() {
 
-	//Read photo
+	//Read img
 	static cv::Mat img = cv::imread("img/german-shepherd-dog.jpg");
+
+	//check if not img
 	if (!img.data)
 	{
 		std::cout << "Image is missing" << std::endl;
-		return img;
+		return cv::Mat();		
 	}
+	return img;
 }

@@ -6,13 +6,25 @@
 class ViewSrc {
 
 private:
+
+	//window name
 	std::string winName;
+
+	//window size
 	int winFlag;
 
 public:
 
+	//default constructor
+	ViewSrc() {};
+
+	//constructor with window name and size param
 	ViewSrc(const std::string WinName, int flag) {
+
+		//window name
 		winName = WinName;
+
+		//window size
 		winFlag = flag;
 
 		//Create new window

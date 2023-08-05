@@ -12,21 +12,40 @@
 
 int main(){
 
-	DataPhoto data;
+	//create controller object
+	Controller controller;
 
-	ViewSrc windOne("Test_window1", cv::WINDOW_NORMAL);
-	ViewSrc windSecond("Test_window2", cv::WINDOW_AUTOSIZE);
+	//create img object
+	DataPhoto _data;
+
+	//class DataPhoto object gets img
+	cv::Mat controllerData = _data.getData();
+
+	//create window1
+	ViewSrc _windOne("Test_window1", cv::WINDOW_AUTOSIZE);
+
+	//create window2
+	ViewSrc _windSecond("Test_window2", cv::WINDOW_AUTOSIZE);
+
+	//send img to controller
+	controller.setModel(controllerData);
+
+	//send window1 to controller
+	controller.setView(_windOne);
+
+	//send window1 to controller
+	controller.setView(_windSecond);
 
 	while (true) {
 
-		//exit if ESC or 'q' key is pressed
-		if ((cv::waitKey(0) == tolower(81)) || (cv::waitKey(0) == 27)){
+		int key = cv::waitKey(0);
+
+		//exit if ESC, 'Q' or 'q' key is pressed
+		if ((key == tolower(81)) || (key == toupper(81)) || (key == 27)){
 			(exit(0));
 		}
-		else{			
-			//Display window
-
-			//cv::imshow("New_window", data.getData());
+		else{				
+			controller.work();
 		}
 	}
 }

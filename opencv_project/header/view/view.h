@@ -6,10 +6,13 @@
 class View {
 
 private:
+
+	//img object
 	cv::Mat img;
 
 public:
-
+	
+	//default get img
 	virtual cv::Mat getData() {
 		return img;
 	}

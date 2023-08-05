@@ -10,6 +10,7 @@ class DataPhoto: public Data {
 
 public:
 
+	//get img
 	cv::Mat getData();
 
 };

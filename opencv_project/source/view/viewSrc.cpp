@@ -19,4 +19,10 @@ void ViewSrc::showFrame(cv::Mat frame){
 	//Display window1
 	cv::imshow("Test_window1", frame);
 
+	//image to grey color
+	cv::cvtColor(frame, frame, cv::COLOR_BGR2GRAY);
+
+	//Display window2
+	cv::imshow("Test_window2", frame);
+
 }

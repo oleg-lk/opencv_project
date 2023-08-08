@@ -3,25 +3,32 @@
 #include "controller\controller.h"
 
 //controller gets image
-void Controller::setModel(DataPhoto model) {
-	controllerModel = model;
+void Controller::setData(DataPhoto data) {
+	controllerData = data;
 }
 
 //controller gets window
-void Controller::setView(ViewSrc frame) {
-	controllerFrame = frame;
+void Controller::setView1(ViewSrc view1) {
+	controllerView1 = view1;
+}
+
+void Controller::setView2(ViewSrc view2) {
+	controllerView2 = view2;
+}
+
+void Controller::setView3(ViewSrc view3) {
+	controllerView3 = view3;
 }
 
 void Controller::work() {
 
-	//cv::Mat imgGray;
+	cv::Mat model = controllerData.getData();
 
 	//controller get img and window
-	controllerFrame.showFrame(controllerModel.getData());
+	controllerView1.showFrame(model);
 
-	//image to grey color
-	//cv::cvtColor(controllerModel, controllerModel, cv::COLOR_BGR2GRAY);
+	controllerView2.showFrame(model);
 
-	//Display window2
-	//cv::imshow("Test_window2", controllerModel);
+	//controllerView3.showFrame(controllerData.getData());
+
 }

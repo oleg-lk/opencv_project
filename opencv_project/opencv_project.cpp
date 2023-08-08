@@ -6,6 +6,7 @@
 
 #include "controller/controller.h"
 #include "data/dataPhoto.h"
+#include "data/dataVideo.h"
 #include "data/data.h"
 #include "view/view.h"
 #include "view/viewSrc.h"
@@ -13,25 +14,30 @@
 int main(){
 
 	//create controller object
-	Controller controller;
+	Controller _controller;
 
 	//create img object
 	DataPhoto _data;
 
 	//create window1
-	ViewSrc _windOne("Test_window1", cv::WINDOW_AUTOSIZE);
+	ViewSrc _windFirst("Test_window1", cv::WINDOW_AUTOSIZE);
 
 	//create window2
 	ViewSrc _windSecond("Test_window2", cv::WINDOW_AUTOSIZE);
 
+	//create window2
+	ViewSrc _windThird("Test_window3", cv::WINDOW_AUTOSIZE);
+
 	//send img to controller
-	controller.setModel(_data);
+	_controller.setData(_data);
 
 	//send window1 to controller
-	controller.setView(_windOne);
+	_controller.setView1(_windFirst);
 
 	//send window1 to controller
-	controller.setView(_windSecond);
+	_controller.setView2(_windSecond);
+
+	_controller.setView3(_windThird);
 
 	while (true) {
 
@@ -42,7 +48,7 @@ int main(){
 			(exit(0));
 		}
 		else{				
-			controller.work();
+			_controller.work();
 		}
 	}
 }

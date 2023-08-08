@@ -10,11 +10,18 @@ private:
 	//img object
 	cv::Mat img;
 
+	//video object
+	cv::VideoCapture vid;
+
 public:
 
 	//default get img
 	virtual cv::Mat getData() {
 		return img;
+	}
+
+	virtual cv::VideoCapture getVideo() {
+		return vid;
 	}
 
 };

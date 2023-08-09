@@ -2,6 +2,7 @@
 
 #include "data\data.h"
 #include "data\dataPhoto.h"
+#include "data\dataVideo.h"
 #include "view/view.h"
 #include "view/viewSrc.h"
 
@@ -10,7 +11,9 @@ class Controller : public Data, public ViewSrc {
 private:
 	
 	//img object
-	DataPhoto controllerData;
+	DataPhoto controllerData1;
+
+	DataVideo controllerData2;
 
 	//window object
 	ViewSrc controllerView1;
@@ -25,6 +28,8 @@ public:
 
 	//controller gets image
 	void setData(DataPhoto data);
+
+	void setData(DataVideo data);
 	
 	//controller gets window
 	void setView1(ViewSrc view1);

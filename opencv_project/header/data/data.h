@@ -19,9 +19,4 @@ public:
 	virtual cv::Mat getData() {
 		return img;
 	}
-
-	virtual cv::VideoCapture getVideo() {
-		return vid;
-	}
-
 };

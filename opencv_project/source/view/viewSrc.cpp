@@ -25,4 +25,7 @@ void ViewSrc::showFrame(cv::Mat frame){
 	//Display window2
 	cv::imshow("Test_window2", frame);
 
+	//Display window3
+	cv::imshow("Test_window3", frame);
+
 }

@@ -9,5 +9,5 @@ class DataVideo: public Data {
 
 public:
 
-	cv::VideoCapture getVideo();
+	cv::Mat getData();
 };

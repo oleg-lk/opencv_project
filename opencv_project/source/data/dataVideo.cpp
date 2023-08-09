@@ -5,19 +5,17 @@
 #include "data/dataVideo.h"
 #include "data/data.h"
 
-cv::VideoCapture DataVideo::getVideo() {
+cv::Mat DataVideo::getData() {
+
+	cv::Mat frame;
 
 	//Read video
-	static cv::VideoCapture cap(0);
-
-	int deviceID = 0;
-	int apiID = cv::CAP_ANY;
+	cv::VideoCapture cap(0);
 
 	//check if not video
-	if (!cap.isOpened())
-	{
+	if (!cap.read(frame)) {
 		std::cout << "Video is missing" << std::endl;
-		return cv::VideoCapture();
+		return cv::Mat();
 	}
-	return cap;
+	return frame;
 }

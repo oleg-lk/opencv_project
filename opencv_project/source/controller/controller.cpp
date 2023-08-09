@@ -4,7 +4,11 @@
 
 //controller gets image
 void Controller::setData(DataPhoto data) {
-	controllerData = data;
+	controllerData1 = data;
+}
+
+void Controller::setData(DataVideo data) {
+	controllerData2 = data;
 }
 
 //controller gets window
@@ -22,13 +26,15 @@ void Controller::setView3(ViewSrc view3) {
 
 void Controller::work() {
 
-	cv::Mat model = controllerData.getData();
+	cv::Mat model = controllerData1.DataPhoto::getData();
 
 	//controller get img and window
 	controllerView1.showFrame(model);
 
 	controllerView2.showFrame(model);
 
-	//controllerView3.showFrame(controllerData.getData());
+	cv::Mat model2 = controllerData2.DataVideo::getData();
+
+	controllerView3.showFrame(model2);
 
 }

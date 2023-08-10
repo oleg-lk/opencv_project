@@ -133,6 +133,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="opencv_project.cpp" />
+    <ClCompile Include="source\controller\controller.cpp" />
+    <ClCompile Include="source\data\dataPhoto.cpp" />
+    <ClCompile Include="source\data\dataVideo.cpp" />
+    <ClCompile Include="source\view\viewSrc.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

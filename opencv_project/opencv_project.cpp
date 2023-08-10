@@ -1,68 +1,80 @@
 ﻿#include <opencv2/opencv.hpp>
 #include <opencv2/highgui.hpp>
 
-#include <iostream>
+//LK!!! лишние хедеры
+//LK!!!#include <Windows.h>
+//LK!!!#include <iostream>
 
-using namespace std;//TODO-> убрать
-using namespace cv;	//TODO-> убрать
+#include "controller/controller.h"
+#include "data/dataPhoto.h"
+#include "data/dataVideo.h"
+#include "data/data.h"
+#include "view/view.h"
+#include "view/viewSrc.h"
 
-int main()
-{
-	//!!! корневая папка проекта - та где лежит opencv_project.vcxproj файл
+//TODO создать базовый класс Model с виртуальной функцией cv::Mat process(cv::Mat frame)
+//TODO создать базовый класс GrayModel с базовым классом Model, реализовать функцию process(cv::Mat frame),
+//TODO которая будет возвращать серую картинку из той, которая пришла в аргументе функции
+//TODO добавить контроллеру функцию установки модели Controller::setModel()
 
-	//TODO1 - слой data
-	//!!! уровень data изолирован ото всех и не от кого не зависит
-	// создать класс для данных DataPhoto
-	// описание самого класса -> header/data/data_photo.h
-	// реализация функций класса -> source/data/data_photo.cpp
-	// у класса есть функция getData, возвращающая cv::Mat
-	// если imread не прочитал файл, вывести сообщение в консоль и вернуть пустой cv::Mat
-	Mat lena = imread("img/z_96977774.jpg");	//TODO->в класс DataPhoto
-	if (!lena.data)									//TODO->в класс DataPhoto
-	{												//TODO->в класс DataPhoto
-		cout << "Image is missing" << endl;			//TODO->в класс DataPhoto
-		return -1;									//TODO->в класс DataPhoto
-	}												//TODO->в класс DataPhoto
+int main(){
 
-	//TODO2 - слой view
-	//!!! уровень view может ссылаться только на уровень controller чтобы давать ему запросы на работу с моделью
-	// создать класс для вывода оригинального изображения ViewSrc
-	// описание самого класса -> header/view/view_src.h
-	// реализация функций класса -> source/view/view_src.cpp 
-	// у класса есть функция showFrame, принимающая cv::Mat
-	// в конструкторе класса инициализируется окно(cv::namedWindow)
-	// и создается трекбар. В трекбар необходимо передать callback функцию для отслеживания изменений трекбара
-	cv::namedWindow("New_window", WINDOW_NORMAL);	//TODO->в конструктор ViewSrc
+	//create controller object
+	//LK!!!названия локальных переменных просто без подчеркивания
+	Controller controller;
 
-	//Display window
-	imshow("New_window", lena);
+	//create img object
+	DataPhoto dataPhoto;
+	//TODO создать обьект DataVideo
+	//TODO создать обьект GrayModel
 
-	cv::resizeWindow("New_window", 511, 682);	//TODO-> убрать
+	//create window1
+	ViewSrc windFirst("Test_window1", cv::WINDOW_AUTOSIZE);
 
-	int brightness_slider = 50; // TODO->в класс ViewSrc
+	//create window2
+	ViewSrc windSecond("Test_window2", cv::WINDOW_AUTOSIZE);
 
-	//Add slider "brightness"
-	createTrackbar("Brightness", "New_window", &brightness_slider, 100);	//TODO->в класс ViewSrc
+	//LK!!! третье окно пока не нужно
+	//create window2
+	//LK!!!ViewSrc windThird("Test_window3", cv::WINDOW_AUTOSIZE);
 
-	//TODO3
-	// создать бесконечный цикл обработки ползовательских нажатий
-	// при нажатии ESC или 'q' - завершени епрограммы
-	//Press key to close a window
-	waitKey(0);
+	//LK!!! задаем контроллеру источник данных - фото
+	//send img to controller
+	controller.setData(dataPhoto);
 
-	//TODO4
-	// создать для класса DataPhoto базовый класс Data и унаследовать DataPhoto от Data
-	// описание самого класса -> header/data/data.h
-	// у класса Data создать виртуальную функцию getData, которую реализует его наслденик DataPhoto
+	//send window1 to controller
+	controller.setView1(windFirst);
 
-	//TODO5
-	// создать для класса ViewSrc базовый класс View и унаследовать DataPhoto от View
-	// описание самого класса -> header/view/view.h
-	// у класса View создать виртуальную функцию getData, которую реализует его наслденик DataPhoto
+	//send window1 to controller
+	controller.setView2(windSecond);
 
-	//TODO6 - слой controller
-	//!!! уровень controller храните в себе модель и все view
-	//!!! controller запрашивает у модели данные и отдает их view
+	//LK!!! третье окно пока не нужно
+	//LK!!!controller.setView3(windThird);
 
-	return 0;
+	//TODO задать контроллеру модель
+
+	//запускаем бесконечный цикл
+	while (true) {
+
+		//LK!!!int key = cv::waitKey(0);
+		//LK!!! чтобы изображение постоянно перерисовывалось,
+		//LK!!! меняем задержку у cv::waitKey с 0 на например 100 миллисекунд
+		//LK!!! чтобы получить примерно 10fps
+		const int delay = 100;	//TODO
+		int key = cv::waitKey(delay);
+
+		//exit if ESC, 'Q' or 'q' key is pressed
+		if ((key == tolower(81)) || (key == toupper(81)) || (key == 27)){
+			(exit(0));
+		}
+		//TODO по кнопке 'd' установить в controller dataPhoto
+		//TODO по кнопке 'v' установить в controller DataVideo
+
+		//LK!!! ветка else лишняя
+		//LK!!!else{				
+		//LK!!!	controller.work();
+		//LK!!!}
+		//запускаем 
+		controller.work();
+	}
 }

@@ -14,10 +14,6 @@ void Controller::setView2(ViewSrc view2) {
 	controllerView2 = view2;
 }
 
-cv::Mat Controller::frameFromModel() {
-
-}
-
 void Controller::work() {
 
 	cv::Mat frame = _data.getData();

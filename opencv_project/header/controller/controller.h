@@ -32,8 +32,6 @@ public:
 
 	void setData(Data data);
 
-	cv::Mat frameFromModel();
-
 	//controller starts
 	void work();
 

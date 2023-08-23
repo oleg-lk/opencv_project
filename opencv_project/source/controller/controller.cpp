@@ -1,14 +1,8 @@
-#pragma once
-
 #include "controller\controller.h"
 
 //controller gets image
-void Controller::setData(DataPhoto data) {
-	controllerData1 = data;
-}
-
-void Controller::setData(DataVideo data) {
-	controllerData2 = data;
+void Controller::setData(Data data) {
+	_data = data;
 }
 
 //controller gets window
@@ -20,21 +14,19 @@ void Controller::setView2(ViewSrc view2) {
 	controllerView2 = view2;
 }
 
-void Controller::setView3(ViewSrc view3) {
-	controllerView3 = view3;
+cv::Mat Controller::frameFromModel() {
+
 }
 
 void Controller::work() {
 
-	cv::Mat model = controllerData1.DataPhoto::getData();
+	cv::Mat frame = _data.getData();
 
 	//controller get img and window
-	controllerView1.showFrame(model);
+	controllerView1.showFrame(frame);
 
-	controllerView2.showFrame(model);
+	cv::Mat frameFromModel = _model.process(frame);
 
-	cv::Mat model2 = controllerData2.DataVideo::getData();
-
-	controllerView3.showFrame(model2);
+	controllerView2.showFrame(frameFromModel);
 
 }

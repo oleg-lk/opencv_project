@@ -5,38 +5,34 @@
 #include "data\dataVideo.h"
 #include "view/view.h"
 #include "view/viewSrc.h"
+#include "model/model.h"
+#include "model/grayModel.h"
 
-class Controller : public Data, public ViewSrc {
+class Controller {
 
 private:
 	
-	//img object
-	DataPhoto controllerData1;
-
-	DataVideo controllerData2;
+	Data _data;
 
 	//window object
 	ViewSrc controllerView1;
 
 	ViewSrc controllerView2;
 
-	ViewSrc controllerView3;
+	Model _model;
 
 public:
 
-	Controller() {};
-
-	//controller gets image
-	void setData(DataPhoto data);
-
-	void setData(DataVideo data);
+	Controller() {}
 	
 	//controller gets window
 	void setView1(ViewSrc view1);
 
 	void setView2(ViewSrc view2);
 
-	void setView3(ViewSrc view3);
+	void setData(Data data);
+
+	cv::Mat frameFromModel();
 
 	//controller starts
 	void work();

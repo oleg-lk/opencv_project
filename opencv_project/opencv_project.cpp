@@ -1,54 +1,51 @@
 ﻿#include <opencv2/opencv.hpp>
 #include <opencv2/highgui.hpp>
-
-#include <Windows.h>
-#include <iostream>
-
 #include "controller/controller.h"
 #include "data/dataPhoto.h"
 #include "data/dataVideo.h"
 #include "data/data.h"
 #include "view/view.h"
 #include "view/viewSrc.h"
+#include "model/grayModel.h"
 
 int main(){
 
 	//create controller object
-	Controller _controller;
+	Controller controller;
 
 	//create img object
-	DataPhoto _data;
+	DataPhoto dataP;
+
+	DataVideo dataV;
+
+	GrayModel grayM;
 
 	//create window1
-	ViewSrc _windFirst("Test_window1", cv::WINDOW_AUTOSIZE);
+	ViewSrc windFirst("Test_window1", cv::WINDOW_AUTOSIZE);
 
 	//create window2
-	ViewSrc _windSecond("Test_window2", cv::WINDOW_AUTOSIZE);
-
-	//create window2
-	ViewSrc _windThird("Test_window3", cv::WINDOW_AUTOSIZE);
+	ViewSrc windSecond("Test_window2", cv::WINDOW_AUTOSIZE);
 
 	//send img to controller
-	_controller.setData(_data);
+	controller.setData(dataP);
 
 	//send window1 to controller
-	_controller.setView1(_windFirst);
+	controller.setView1(windFirst);
 
-	//send window1 to controller
-	_controller.setView2(_windSecond);
+	//send window2 to controller
+	controller.setView2(windSecond);
 
-	_controller.setView3(_windThird);
+	//TODO задать контроллеру модель
 
 	while (true) {
 
-		int key = cv::waitKey(0);
+		const int delay = 100;
+		int key = cv::waitKey(delay);
 
 		//exit if ESC, 'Q' or 'q' key is pressed
 		if ((key == tolower(81)) || (key == toupper(81)) || (key == 27)){
 			(exit(0));
-		}
-		else{				
-			_controller.work();
-		}
+		}			
+		controller.work();
 	}
 }
